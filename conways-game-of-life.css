@@ -1,0 +1,25 @@
+/* Game of life.css*/
+
+body{
+    padding:20px;
+    background-color: #dddddd;
+}
+
+#gridContainer{
+    padding-bottom:10px;
+}
+table{
+    background: #444444;
+    border-spacing: 0px;
+}
+td{
+    border: 1px solid rbg(90, 90, 90);
+    width:10px;
+    height:10px;
+}
+td.isDead{
+    background-color: transparent;
+}
+td.isAlive{
+    background-color: #ffff00;
+}
