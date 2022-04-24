@@ -5,9 +5,18 @@ body{
     background-color: #dddddd;
 }
 
-#gridContainer{
-    padding-bottom:10px;
+#grid {
+  display: grid;
+  grid-template-columns: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
+  grid-template-rows: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
 }
+div.cell {
+  background: Lightgrey;
+  border: 1px solid Grey;
+  padding: 10px;
+}
+
+/*
 table{
     background: #444444;
     border-spacing: 0px;
@@ -23,3 +32,4 @@ td.isDead{
 td.isAlive{
     background-color: #ffff00;
 }
+*/
