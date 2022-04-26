@@ -1,35 +1,41 @@
 /* Game of life.css*/
-
-body{
-    padding:20px;
-    background-color: #dddddd;
+body {
+  background-color: black;
+  color: white;
+  font-size: 15px;
 }
 
-#grid {
-  display: grid;
-  grid-template-columns: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
-  grid-template-rows: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
-}
-div.cell {
-  background: Lightgrey;
-  border: 1px solid Grey;
-  padding: 10px;
+#topbar {
+  margin: 5px;
 }
 
-/*
+#buttons {
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: center;
+}
+
+#title {
+  margin: auto;
+  text-align: center;
+  font-size: 30px;
+}
+
+#grid{
+  padding-bottom: 10px;
+}
 table{
-    background: #444444;
-    border-spacing: 0px;
+  background-color: Lightgrey;
 }
 td{
-    border: 1px solid rbg(90, 90, 90);
-    width:10px;
-    height:10px;
+  border: 1px solid darkgray;
+  width: 10px;
+  height: 10px;
 }
-td.isDead{
-    background-color: transparent;
+
+.alive{
+  background-color: yellow;
 }
-td.isAlive{
-    background-color: #ffff00;
+.dead{
+  background-color: black;
 }
-*/

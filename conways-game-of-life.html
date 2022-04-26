@@ -5,25 +5,20 @@
     <title>Conway's game of life</title>
     <link rel="stylesheet" type="text/css" href="conways-game-of-life.css">
   </head>
-  <body>
-    <script type='module' src="scripts/main.js"></script>
-    <div id="grid">
-      <div class="cell">0</div> <div class="cell">0</div> <div class="cell">0</div> <div class="cell">1</div> <div class="cell">1</div>
-      <div class="cell">0</div> <div class="cell">0</div> <div class="cell">0</div> <div class="cell">0</div> <div class="cell">1</div>
-      <div class="cell">1</div> <div class="cell">0</div> <div class="cell">0</div> <div class="cell">0</div> <div class="cell">0</div>
-      <div class="cell">1</div> <div class="cell">1</div> <div class="cell">0</div> <div class="cell">1</div> <div class="cell">0</div>
-      <div class="cell">0</div> <div class="cell">0</div> <div class="cell">0</div> <div class="cell">1</div> <div class="cell">1</div>
-      <div class="cell">0</div> <div class="cell">0</div> <div class="cell">0</div> <div class="cell">0</div> <div class="cell">1</div>
-      <div class="cell">1</div> <div class="cell">0</div> <div class="cell">0</div> <div class="cell">0</div> <div class="cell">0</div>
-      <div class="cell">1</div> <div class="cell">1</div> <div class="cell">0</div> <div class="cell">1</div> <div class="cell">0</div>
-      <div class="cell">0</div> <div class="cell">0</div> <div class="cell">0</div> <div class="cell">1</div> <div class="cell">1</div>
-      <div class="cell">0</div> <div class="cell">0</div> <div class="cell">0</div> <div class="cell">0</div> <div class="cell">1</div>
-      <div class="cell">1</div> <div class="cell">0</div> <div class="cell">0</div> <div class="cell">0</div> <div class="cell">0</div>
-      <div class="cell">1</div> <div class="cell">1</div> <div class="cell">0</div> <div class="cell">1</div> <div class="cell">0</div>
-    </div>
-<!--    <div class="grid"> <div>Cell</div> <div>Cell</div> </div> -->
-    </div>
-  </body>
+      <body>
+        <script type='module' src="scripts/main.js"></script>
+        <div id="topbar">
+          <div id="title">
+                Conway's Game of Life
+          </div>
+          <div id="buttons">
+            <button onclick="play()">Play</button>
+            <button onclick="pause()">Pause</button>
+            <button onclick="reset()">Reset</button>
+          </div>
+        </div>
+        <div id="grid"></div>
+      </body>
 </html>
 
 <!-- <p>For interaction between user and website see Events on JavaScript_basics</p> -->
