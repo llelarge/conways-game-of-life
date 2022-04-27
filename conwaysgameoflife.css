@@ -1,0 +1,41 @@
+body {
+  background-color: black;
+  color: white;
+  font-size: 15px;
+}
+
+#topbar {
+  margin: 5px;
+}
+
+#buttons {
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: center;
+}
+
+#title {
+  margin: auto;
+  text-align: center;
+  font-size: 30px;
+}
+
+#grid {
+    padding-bottom: 10px;
+}
+table {
+    background-color: whitesmoke;
+}
+td {
+    border: 1px solid darkgray;
+    width: 10px;
+    height: 10px;
+}
+/*
+.alive{
+  background-color: yellow;
+}
+.dead{
+  background-color: black;
+}
+*/
