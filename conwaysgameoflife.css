@@ -21,21 +21,19 @@ body {
 }
 
 #grid {
-    padding-bottom: 10px;
+    padding-bottom: 0px;
 }
 table {
-    background-color: whitesmoke;
+    background-color: lightgrey;
 }
 td {
     border: 1px solid darkgray;
     width: 10px;
     height: 10px;
 }
-/*
-.alive{
+td.alive{
   background-color: yellow;
 }
-.dead{
-  background-color: black;
+td.dead{
+  background-color: darkgray;
 }
-*/
