@@ -2,7 +2,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Game of Life</title>
-    <!-- Our Style Sheet -->
     <link rel="stylesheet" href='conwaysgameoflife.css'>
 </head>
 <body>
@@ -10,15 +9,15 @@
     <div id="title">
           Conway's Game of Life
     </div>
-    <div id="buttons">
-      <button onclick="play()">Play</button>
-      <button onclick="pause()">Pause</button>
-      <button onclick="reset()">Reset</button>
-    </div>
+    <Input type='button' id="startstop" value="Start" onclick="startStop()"/>
+    <Input type='button' id="playsingleevolution" value="Play a single evolution" onclick="playSingleEvolution()"/>
+    <Input type='button' id="reset" value="Reset" onclick="reset()"/>
   </div>
   <div id='grid'>
   </div>
-<!-- Our JavaScript -->
+  <h1> Age of the cell population : <span id="ageofpop"></span></h1>
+<!--  <canvas id='canvas' width="40" height="40"> </canvas> -->
+<!-- add a canvas -->
   <script src='main.js'></script>
 </body>
 </html>
