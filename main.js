@@ -1,13 +1,20 @@
-const nbrows = 40;  /*number of rows in the grid*/
-const nbcols = 40;  /*number of cols in the grid*/
+const nbrows = 10;  /*number of rows in the grid*/
+const nbcols = 10;  /*number of cols in the grid*/
+
+//const height = document.getElementById('canvas').nbrows;
+//const width = document.getElementById('canvas').nbcols;
 
 let currentGrid = [nbrows];     //creates an array of nbrows rows
 let nextGrid = [nbrows];        //creates an array of nbrows rows
 
+let playing = false;
+let timer;
+let ageOfPop = 0;
+
 function createArrays(){
   for (let row=0;row<nbrows;row++){         //for each row in these arrays
-    currentGrid[row] = newArray(nbcols);    //creates an array of nbcols columns (we have an array of array = 2D array)
-    nextGrid[row] = newArray(nbcols);       //creates an array of nbcols columns
+    currentGrid[row] = new Array(nbcols);    //creates an array of nbcols columns (we have an array of array = 2D array)
+    nextGrid[row] = new Array(nbcols);       //creates an array of nbcols columns
   }
 }
 
@@ -22,9 +29,11 @@ function initializeArrays(){
 
 function createGrid() {
     let grid = document.querySelector('#grid');       //points to the element '#grid' in css file (to display it on the html document)
+    //const canvas = document.getElementById('canvas');  //points to the element 'canvas' in html file
+    //const ctx = canvas.getContext('2d');
 
     let table = document.createElement('table');      //creates a table in this grid
-    table.setAttribute('id','grid');                  // sets the attribute 'id' with the value 'grid' to the element 'table'
+    table.setAttribute('id','gridd');                  // sets the attribute 'id' with the value 'grid' to the element 'table'
     for (let row = 0; row < nbrows; row++) {          // for each row
         let tr = document.createElement('tr');        //creates the element 'tr'
         for (let col = 0; col < nbcols; col++) {      //for each column in each row (= for each cell)
@@ -82,23 +91,25 @@ function countNeighborsAlive(row,col){
     }
   }
 
-  if (row+1 <= nbrows && col+1 <= nbcols){  // if the cell has an lower-right-corner neighbor
+  // The 3 blocks below don't work and I don't why since it's just a copy&paste
+
+  /*if (row+1 <= nbrows && col+1 <= nbcols){  // if the cell has an lower-right-corner neighbor
     if (currentGrid[row+1][col+1]==1){      //if this neighbor is alive
       neighbors_alive++;                    //neighbors_alive = neighbors_alive+1
     }
-  }
+  }*/
 
-  if (row+1 <= nbrows){                     // if the cell has an lower neighbor
+  /*if (row+1 <= nbrows){                     // if the cell has an lower neighbor
     if (currentGrid[row+1][col]==1){        //if this neighbor is alive
       neighbors_alive++;                    //neighbors_alive = neighbors_alive+1
     }
-  }
+  }*/
 
-  if (row+1 <= nbrows && col-1 >= 0){       // if the cell has an lower-left-corner neighbor
+  /*if (row+1 <= nbrows && col-1 >= 0){       // if the cell has an lower-left-corner neighbor
     if (currentGrid[row+1][col-1]==1){      //if this neighbor is alive
       neighbors_alive++;                    //neighbors_alive = neighbors_alive+1
     }
-  }
+  }*/
 
   if (col-1 >= 0){                          // if the cell has an left neighbor
     if (currentGrid[row][col-1]==1){        //if this neighbor is alive
@@ -111,7 +122,7 @@ function countNeighborsAlive(row,col){
 
 function createNextGrid(){
   for (let row=0;row<nbrows;row++){     //for each row
-    for (let col=0;col<ncols;col++){    // for each column in each row (=> for each cell)
+    for (let col=0;col<nbcols;col++){    // for each column in each row (=> for each cell)
       let neighbors_alive = countNeighborsAlive(row,col);  //count the number of neighbors alive
       if (currentGrid[row][col]==1) {                     // if this cell is alive
         if (neighbors_alive==2 || neighbors_alive==3) {   // and if the number of neighbors alive of this cell is 2 or 3
@@ -123,11 +134,61 @@ function createNextGrid(){
         if (neighbors_alive==3){                          // if it has 3 neighbors alive
           nextGrid[row][col]=1;                           // it will become alive in the next grid
         }else{                                            // otherwise
-          nextGrid[row][col]=0;                           // it will remains dead
+          nextGrid[row][col]=0;                           // it will remain dead
         }
       }
     }
   }
+}
+
+function setupNextGrid(){
+  for (let row=0;row<nbrows;row++){
+    for (let col=0;col<nbcols;col++){
+      currentGrid[row][col]=nextGrid[row][col];          //nextGrid becomes the currentGrid
+      nextGrid[row][col]=0;                              //reset nextGrid with only dead cells
+      let cell = document.getElementById(row+'_'+col);
+      if (currentGrid[row][col]==0){
+        cell.setAttribute('class','dead');
+      }else{
+        cell.setAttribute('class','alive');
+      }
+    }
+  }
+}
+
+function play(){        //When the user press the 'play' button
+  createNextGrid();
+  setupNextGrid();
+  if (playing){
+    timer = setTimeout(play,1000);
+    ageOfPop++;
+    document.getElementById("ageofpop").innerHTML = ageOfPop;
+  }
+}
+
+function startStop(){
+  let startstop = document.querySelector('#startstop');
+  if (!playing){
+    playing=true;
+    startstop.value='Stop';
+    play();
+  }else{
+    playing=false;
+    startstop.value='Start';
+    clearTimeout(timer);
+  }
+}
+
+function playSingleEvolution(){
+  let playsingleevolution = document.querySelector('#playsingleevolution');
+  createNextGrid();
+  setupNextGrid();
+  ageOfPop++;
+  document.getElementById("ageofpop").innerHTML = ageOfPop;
+}
+
+function reset(){
+  location.reload();
 }
 
 window.onload=()=>{
@@ -136,21 +197,6 @@ window.onload=()=>{
     initializeArrays();
 }
 
-/*
-
-function play(){
-
-}
-
-function pause(){
-
-}
-
-function reset(){
-
-}
-
-/*window.onload = initialize;*/
 /*
 // let's Go!
 gameloop()

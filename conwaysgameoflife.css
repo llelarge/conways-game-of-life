@@ -8,7 +8,7 @@ body {
   margin: 5px;
 }
 
-#buttons {
+#ageOfPop {
   margin-top: auto;
   margin-bottom: auto;
   text-align: center;
@@ -19,6 +19,7 @@ body {
   text-align: center;
   font-size: 30px;
 }
+
 
 #grid {
     padding-bottom: 0px;
