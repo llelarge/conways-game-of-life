@@ -1,7 +1,7 @@
 //import java.util.Random;
 
-const nbrows = 10;  /*number of rows in the grid*/
-const nbcols = 10;  /*number of cols in the grid*/
+const nbrows = 50;  /*number of rows in the grid*/
+const nbcols = 50;  /*number of cols in the grid*/
 
 //const height = document.getElementById('canvas').nbrows;
 //const width = document.getElementById('canvas').nbcols;
@@ -116,6 +116,64 @@ function model2(){
     cell.setAttribute('class','dead');
   }
   for (let row=(nbrows_/2)+1;row<nbrows;row++){
+    for (let col=0;col<nbcols;col++){
+      let cell = document.getElementById(row+'_'+col);
+      currentGrid[row][col]=0;
+      cell.setAttribute('class','dead');
+    }
+  }
+  ageOfPop=0;
+}
+
+function model3(){
+  let nbrows_;
+  if (nbrows % 2 ==0){
+    nbrows_ = nbrows;
+  }else{
+    nbrows_ = nbrows-1;
+  }
+  let nbcols_;
+  if (nbcols % 2 ==0){
+    nbcols_ = nbcols;
+  }else{
+    nbcols_ = nbcols-1;
+  }
+  for (let row=0;row<(nbrows_/2);row++){
+    for (let col=0;col<nbcols;col++){
+      let cell = document.getElementById(row+'_'+col);
+      currentGrid[row][col]=0;
+      cell.setAttribute('class','dead');
+    }
+  }
+  for (let col=0;col<(nbcols_/2)-1;col++){
+    let cell = document.getElementById(nbrows_/2+'_'+col);
+    currentGrid[nbrows_/2][col]=0;
+    cell.setAttribute('class','dead');
+  }
+  for (let col=(nbcols_/2)-1;col<nbcols_/2+2;col++){
+    let cell = document.getElementById(nbrows_/2+'_'+col);
+    currentGrid[nbrows_/2][col]=1;
+    cell.setAttribute('class','alive');
+  }
+  for (let col=nbcols_/2+2;col<nbcols;col++){
+    let cell = document.getElementById(nbrows_/2+'_'+col);
+    currentGrid[nbrows_/2][col]=0;
+    cell.setAttribute('class','dead');
+  }
+  for (let col=0;col<nbcols_/2;col++){
+    let cell = document.getElementById(nbrows_/2+1+'_'+col);
+    currentGrid[nbrows_/2+1][col]=0;
+    cell.setAttribute('class','dead');
+  }
+  let cell = document.getElementById(nbrows_/2+1+'_'+nbcols_/2);
+  currentGrid[nbrows_/2+1][nbcols_/2]=1;
+  cell.setAttribute('class','alive');
+  for (let col=nbcols_/2+1;col<nbcols;col++){
+    let cell = document.getElementById(nbrows_/2+1+'_'+col);
+    currentGrid[nbrows_/2+1][col]=0;
+    cell.setAttribute('class','dead');
+  }
+  for (let row=(nbrows_/2)+2;row<nbrows;row++){
     for (let col=0;col<nbcols;col++){
       let cell = document.getElementById(row+'_'+col);
       currentGrid[row][col]=0;
