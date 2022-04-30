@@ -27,6 +27,102 @@ function initializeArrays(){
   }
 }
 
+function model1(){
+  let nbrows_;
+  if (nbrows % 2 ==0){
+    nbrows_ = nbrows;
+  }else{
+    nbrows_ = nbrows-1;
+  }
+  let nbcols_;
+  if (nbcols % 2 ==0){
+    nbcols_ = nbcols;
+  }else{
+    nbcols_ = nbcols-1;
+  }
+  for (let row=0;row<(nbrows_/2)-1;row++){
+    for (let col=0;col<nbcols;col++){
+      let cell = document.getElementById(row+'_'+col);
+      currentGrid[row][col]=0;
+      cell.setAttribute('class','dead');
+    }
+  }
+  for (let row=(nbrows_/2)-1;row<nbrows_/2+1;row++){
+    for (let col=0;col<(nbcols_/2)-1;col++){
+      let cell = document.getElementById(row+'_'+col);
+      currentGrid[row][col]=0;
+      cell.setAttribute('class','dead');
+    }
+  }
+  for (let row=(nbrows_/2)-1;row<nbrows_/2+1;row++){
+    for (let col=(nbcols_/2)-1;col<nbcols_/2+1;col++){
+      let cell = document.getElementById(row+'_'+col);
+      currentGrid[row][col]=1;
+      cell.setAttribute('class','alive');
+    }
+  }
+  for (let row=(nbrows_/2)-1;row<nbrows_/2+1;row++){
+    for (let col=nbcols_/2+1;col<nbcols;col++){
+      let cell = document.getElementById(row+'_'+col);
+      currentGrid[row][col]=0;
+      cell.setAttribute('class','dead');
+    }
+  }
+  for (let row=(nbrows_/2)+1;row<nbrows;row++){
+    for (let col=0;col<nbcols;col++){
+      let cell = document.getElementById(row+'_'+col);
+      currentGrid[row][col]=0;
+      cell.setAttribute('class','dead');
+    }
+  }
+  ageOfPop=0;
+}
+
+function model2(){
+  let nbrows_;
+  if (nbrows % 2 ==0){
+    nbrows_ = nbrows;
+  }else{
+    nbrows_ = nbrows-1;
+  }
+  let nbcols_;
+  if (nbcols % 2 ==0){
+    nbcols_ = nbcols;
+  }else{
+    nbcols_ = nbcols-1;
+  }
+  for (let row=0;row<(nbrows_/2);row++){
+    for (let col=0;col<nbcols;col++){
+      let cell = document.getElementById(row+'_'+col);
+      currentGrid[row][col]=0;
+      cell.setAttribute('class','dead');
+    }
+  }
+  for (let col=0;col<(nbcols_/2)-2;col++){
+    let cell = document.getElementById(nbrows_/2+'_'+col);
+    currentGrid[nbrows_/2][col]=0;
+    cell.setAttribute('class','dead');
+  }
+  for (let col=(nbcols_/2)-2;col<nbcols_/2+2;col++){
+    let cell = document.getElementById(nbrows_/2+'_'+col);
+    currentGrid[nbrows_/2][col]=1;
+    cell.setAttribute('class','alive');
+  }
+  for (let col=nbcols_/2+2;col<nbcols;col++){
+    let cell = document.getElementById(nbrows_/2+'_'+col);
+    currentGrid[nbrows_/2][col]=0;
+    cell.setAttribute('class','dead');
+  }
+  for (let row=(nbrows_/2)+1;row<nbrows;row++){
+    for (let col=0;col<nbcols;col++){
+      let cell = document.getElementById(row+'_'+col);
+      currentGrid[row][col]=0;
+      cell.setAttribute('class','dead');
+    }
+  }
+  ageOfPop=0;
+}
+
 function createGrid() {
     let grid = document.querySelector('#grid');       //points to the element '#grid' in css file (to display it on the html document)
     //const canvas = document.getElementById('canvas');  //points to the element 'canvas' in html file
@@ -49,6 +145,8 @@ function createGrid() {
 }
 
 function clickOnCell(){
+  ageOfPop = 0;
+  document.getElementById("ageofpop").innerHTML = ageOfPop;
   let row_col = this.id.split('_');     //creates a table with the row index as the first case and the column index as the second
   let row = row_col[0];                 // the row index is equal to the first case of the table 'row_col'
   let col = row_col[1];                 // the column index is equal to the second case of the table 'row_col'
