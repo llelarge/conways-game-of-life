@@ -1,3 +1,5 @@
+//import java.util.Random;
+
 const nbrows = 10;  /*number of rows in the grid*/
 const nbcols = 10;  /*number of cols in the grid*/
 
@@ -118,6 +120,23 @@ function model2(){
       let cell = document.getElementById(row+'_'+col);
       currentGrid[row][col]=0;
       cell.setAttribute('class','dead');
+    }
+  }
+  ageOfPop=0;
+}
+
+function random(){
+  for (let row=0;row<nbrows;row++){
+    for (let col=0;col<nbcols;col++){
+      let cell = document.getElementById(row+'_'+col);
+      //let tmp = Random.nextInt(2);
+      let tmp = Math.floor(Math.random()*2);
+      currentGrid[row][col]=tmp;
+      if (currentGrid[row][col]==1){
+        cell.setAttribute('class','alive');
+      }else{
+        cell.setAttribute('class','dead');
+      }
     }
   }
   ageOfPop=0;
