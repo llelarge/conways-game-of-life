@@ -1,7 +1,7 @@
 body {
-  background-color: lightyellow;
-  color: black;
-  font-size: 10px;
+  background-image: linear-gradient(purple, blue, magenta);
+  color: white;
+  font-size: 15px;
 }
 
 #topbar {
@@ -21,9 +21,8 @@ body {
   margin: auto;
   text-align: center;
   font-size: 30px;
-  color: black;
+  text-shadow: 2px 2px 5px black;
 }
-
 
 #grid {
     padding-bottom: 0px;
@@ -37,7 +36,7 @@ td {
     height: 10px;
 }
 td.alive{
-  background-color: yellow;
+  background-color: magenta;
 }
 td.dead{
   background-color: darkgray;
