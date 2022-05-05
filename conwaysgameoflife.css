@@ -26,6 +26,9 @@ body {
 
 #grid {
     padding-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
 }
 table {
     background-color: lightgrey;
