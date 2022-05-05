@@ -44,3 +44,13 @@ td.alive{
 td.dead{
   background-color: darkgray;
 }
+
+.zoom{
+    height:100vh;
+    width:100%;
+    display:grid;
+    place-items:center;
+    position:fixed;
+    top:0;
+    left:0;
+}
