@@ -105,12 +105,12 @@ function model2(){
     currentGrid[nbrows_/2][col]=0;
     cell.setAttribute('class','dead');
   }
-  for (let col=(nbcols_/2)-2;col<nbcols_/2+2;col++){
+  for (let col=(nbcols_/2)-2;col<nbcols_/2+1;col++){
     let cell = document.getElementById(nbrows_/2+'_'+col);
     currentGrid[nbrows_/2][col]=1;
     cell.setAttribute('class','alive');
   }
-  for (let col=nbcols_/2+2;col<nbcols;col++){
+  for (let col=nbcols_/2+1;col<nbcols;col++){
     let cell = document.getElementById(nbrows_/2+'_'+col);
     currentGrid[nbrows_/2][col]=0;
     cell.setAttribute('class','dead');
@@ -240,58 +240,144 @@ function clickOnCell(){
 }
 
 function countNeighborsAlive(row,col){
-  let neighbors_alive=0;              //starting the counter at 0
+  let neighbors_alive=0;
 
-  if (row-1 >= 0 && col-1 >= 0){          // if the cell has an upper-left-corner neighbor
-    if (currentGrid[row-1][col-1]==1){    //if this neighbor is alive
-      neighbors_alive++;                  //neighbors_alive = neighbors_alive+1
+  if (row-1<0){
+    if (col-1<0){
+      if (currentGrid[row][col+1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row+1][col+1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row+1][col]==1){
+        neighbors_alive++;
+      }
+    }else if (col+1>=nbcols){
+      if (currentGrid[row][col-1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row+1][col-1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row+1][col]==1){
+        neighbors_alive++;
+      }
+    }else{
+      if (currentGrid[row][col-1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row+1][col-1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row+1][col]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row+1][col+1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row][col+1]==1){
+        neighbors_alive++;
+      }
+    }
+  }else if (row+1>=nbrows){
+    if (col-1<0){
+      if (currentGrid[row][col+1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row-1][col+1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row-1][col]==1){
+        neighbors_alive++;
+      }
+    }else if (col+1>=nbcols){
+      if (currentGrid[row][col-1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row-1][col-1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row-1][col]==1){
+        neighbors_alive++;
+      }
+    }else{
+      if (currentGrid[row][col-1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row-1][col-1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row-1][col]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row-1][col+1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row][col+1]==1){
+        neighbors_alive++;
+      }
+    }
+  }else{
+    if (col-1<0){
+      if (currentGrid[row-1][col]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row-1][col+1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row][col+1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row+1][col+1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row+1][col]==1){
+        neighbors_alive++;
+      }
+    }else if (col+1>=nbcols){
+      if (currentGrid[row-1][col]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row-1][col-1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row][col-1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row+1][col-1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row+1][col]==1){
+        neighbors_alive++;
+      }
+    }else{
+      if (currentGrid[row-1][col-1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row-1][col]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row-1][col+1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row][col+1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row+1][col+1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row+1][col]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row+1][col-1]==1){
+        neighbors_alive++;
+      }
+      if (currentGrid[row][col-1]==1){
+        neighbors_alive++;
+      }
     }
   }
-
-  if (row-1 >= 0){                        // if the cell has an upper neighbor
-    if (currentGrid[row-1][col]==1){      //if this neighbor is alive
-      neighbors_alive++;                   //neighbors_alive = neighbors_alive+1
-    }
-  }
-
-  if (row-1 >= 0 && col+1 <= nbcols){     // if the cell has an upper-right-corner neighbor
-    if (currentGrid[row-1][col+1]==1){    //if this neighbor is alive
-      neighbors_alive++;                  //neighbors_alive = neighbors_alive+1
-    }
-  }
-
-  if (col+1 <= nbcols ){                  // if the cell has an right neighbor
-    if (currentGrid[row][col+1]==1){      //if this neighbor is alive
-      neighbors_alive++;                  //neighbors_alive = neighbors_alive+1
-    }
-  }
-
-  // The 3 blocks below don't work and I don't why since it's just a copy&paste
-
-  /*if (row+1 <= nbrows && col+1 <= nbcols){  // if the cell has an lower-right-corner neighbor
-    if (currentGrid[row+1][col+1]==1){      //if this neighbor is alive
-      neighbors_alive++;                    //neighbors_alive = neighbors_alive+1
-    }
-  }*/
-
-  /*if (row+1 <= nbrows){                     // if the cell has an lower neighbor
-    if (currentGrid[row+1][col]==1){        //if this neighbor is alive
-      neighbors_alive++;                    //neighbors_alive = neighbors_alive+1
-    }
-  }*/
-
-  /*if (row+1 <= nbrows && col-1 >= 0){       // if the cell has an lower-left-corner neighbor
-    if (currentGrid[row+1][col-1]==1){      //if this neighbor is alive
-      neighbors_alive++;                    //neighbors_alive = neighbors_alive+1
-    }
-  }*/
-
-  if (col-1 >= 0){                          // if the cell has an left neighbor
-    if (currentGrid[row][col-1]==1){        //if this neighbor is alive
-      neighbors_alive++;                    //neighbors_alive = neighbors_alive+1
-    }
-  }
-
   return neighbors_alive;
 }
 
@@ -371,8 +457,3 @@ window.onload=()=>{
     createArrays();
     initializeArrays();
 }
-
-/*
-// let's Go!
-gameloop()
-*/
